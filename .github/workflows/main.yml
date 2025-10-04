@@ -18,24 +18,6 @@ jobs:
           pip install gspread pandas
         # gspread provides helpers for service-account auth [web:95]
 
-      # Pattern A: base64 secret -> file
-      - name: Write Google creds to file
-        if: env.USE_FILE == '1'
-        run: |
-          echo "$GOOGLE_CREDS_B64" | base64 -d > google-creds.json
-          ls -l google-creds.json
-        env:
-          GOOGLE_CREDS_B64: ${{ secrets.GOOGLE_CREDS_B64 }}
-          USE_FILE: '1'
-        # Writing secrets to files in workflows is a common approach [web:107][web:111]
-
-      - name: Run script (file path)
-        if: env.USE_FILE == '1'
-        env:
-          GOOGLE_CREDS: google-creds.json
-        run: python your_script.py
-        # Script reads GOOGLE_CREDS path and authenticates [web:12]
-
       # Pattern B: pass raw JSON dict via env
       - name: Run script (dict auth)
         if: env.USE_FILE != '1'
