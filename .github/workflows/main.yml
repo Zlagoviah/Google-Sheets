@@ -25,3 +25,9 @@ jobs:
           GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDS_JSON }}
         run: python your_script.py
         # Script parses GOOGLE_CREDS_JSON and authenticates via dict [web:95][web:101]
+        
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update products and df_desc"
+          file_pattern: "*.csv"
