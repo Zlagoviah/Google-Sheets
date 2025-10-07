@@ -17,7 +17,7 @@ sku_col_idx = list(df_desc.columns).index("sku") + 1  # SKU column (1-based)
 col_M_idx = 13  # M is the 13th column
 
 for idx, row in df_desc.iterrows():
-    if row.get("similarity", 0) > 88 and pd.notnull(row.get("sku")):
+    if row.get("similarity", 0) > .88 and pd.notnull(row.get("sku")):
         sheet_row = idx + 2  # 2: account for header (row 1)
         # SKU cell
         sku_cell = rowcol_to_a1(sheet_row, sku_col_idx)
