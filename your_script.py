@@ -21,7 +21,7 @@ for idx, row in df_desc.iterrows():
         sheet_row = idx + 2  # 2: account for header (row 1)
         # SKU cell
         sku_cell = rowcol_to_a1(sheet_row, sku_col_idx)
-        requests.append({"range": sku_cell, "values": [[row["new_sku"]]]})
+        requests.append({"range": sku_cell, "values": [[row["sku"]]]})
         # Column M cell
         m_cell = rowcol_to_a1(sheet_row, col_M_idx)
         requests.append({"range": m_cell, "values": [[1]]})
