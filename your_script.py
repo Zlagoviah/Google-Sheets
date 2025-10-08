@@ -32,7 +32,8 @@ for idx, row in df_desc.iterrows():
         requests.append({"range": m_cell, "values": [[row["similarity"]]]})
         # Column N cell (category_homol) — only if not empty
         category = row.get("category_homol")
-        if pd.notna(category) and str(category).strip() != "":
+        corrected = row.get("category_corrected")
+        if pd.notna(category) and str(category).strip() != "" and str(corrected.strip() == "True":
             n_cell = rowcol_to_a1(sheet_row, col_cat_idx)
             requests.append({"range": n_cell, "values": [[category]]})
 
