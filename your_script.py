@@ -16,6 +16,7 @@ df_desc['similarity'] = df_desc['similarity'].round(2)
 requests = []
 sku_col_idx = list(df_desc.columns).index("sku") + 1  # SKU column (1-based)
 col_M_idx = 13  # M is the 13th column
+col_cat_idx = 14
 
 for idx, row in df_desc.iterrows():
     if row.get("similarity", 0) >= .88 and pd.notnull(row.get("sku")):
@@ -26,6 +27,9 @@ for idx, row in df_desc.iterrows():
         # Column M cell
         m_cell = rowcol_to_a1(sheet_row, col_M_idx)
         requests.append({"range": m_cell, "values": [[row["similarity"]]]})
+        # Column N cell
+        n_cell = rowcol_to_a1(sheet_row, col_cat_idx)
+        requests.append({"range": n_cell, "values": [[row["category_homol"]]]})
 
 # Perform batch update only if needed
 if requests:
