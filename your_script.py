@@ -54,6 +54,6 @@ filename = f"log{timestamp}.csv"
 
 # example: convert updates list to DataFrame for logging
 if requests:
-    log_df = pd.DataFrame(updates)
+    log_df = pd.DataFrame(requests)
     log_df.to_csv(filename, index=False, encoding="utf-8")
     print(f"Saved log file: {filename}")
