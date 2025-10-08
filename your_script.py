@@ -104,8 +104,8 @@ for chunk in chunked(updates, 500):
     body = {"valueInputOption": "USER_ENTERED", "data": chunk}
 
 # Perform batch update only if needed
-  if requests:
-    ws.batch_update(requests)
+if requests:
+  ws.batch_update(requests)
 
 # create a timestamp like 081020251530 (8 Oct 2025, 15:30)
 timestamp = datetime.now().strftime("%d%m%Y%H%M")
