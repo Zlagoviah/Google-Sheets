@@ -15,7 +15,7 @@ ws = gc.open("Concentrador de ventas").worksheet("Cotizaciones")  # share with c
 df_desc = pd.read_csv('df_descc.csv', encoding='utf-8')
 df_desc['similarity'] = df_desc['similarity'].round(2)
 
-Build batch_update requests
+# Build batch_update requests
 requests = []
 sku_col_idx = list(df_desc.columns).index("sku") + 1  # SKU column (1-based)
 col_M_idx = 13  # M is the 13th column
