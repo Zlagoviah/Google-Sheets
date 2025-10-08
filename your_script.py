@@ -30,8 +30,9 @@ for idx, row in df_desc.iterrows():
         m_cell = rowcol_to_a1(sheet_row, col_M_idx)
         requests.append({"range": m_cell, "values": [[row["similarity"]]]})
         # Column N cell
-        #n_cell = rowcol_to_a1(sheet_row, col_cat_idx)
-        #requests.append({"range": n_cell, "values": [[row["category_homol"]]]})
+        n_cell = rowcol_to_a1(sheet_row, col_cat_idx)
+        if [[row["category_homol"]]:
+          requests.append({"range": n_cell, "values": [[row["category_homol"]]]})
 
 # Perform batch update only if needed
 if requests:
