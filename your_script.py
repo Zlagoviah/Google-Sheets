@@ -53,7 +53,7 @@ timestamp = datetime.now().strftime("%d%m%Y%H%M")
 filename = f"log{timestamp}.csv"
 
 # example: convert updates list to DataFrame for logging
-if updates:
+if requests:
     log_df = pd.DataFrame(updates)
     log_df.to_csv(filename, index=False, encoding="utf-8")
     print(f"Saved log file: {filename}")
