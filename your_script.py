@@ -13,7 +13,7 @@ gc = gspread.service_account_from_dict(json.loads(creds_json))  # dict-based aut
 ws = gc.open("Concentrador de ventas").worksheet("Cotizaciones")  # share with client_email [web:95]
 
 df_desc = pd.read_csv('df_descc.csv', encoding='utf-8')
-df_desc['similarity'] = df_desc['similarity'].round(2)
+df_desc['similarity'] = df_desc['similarity'].round(3)
 
 # Build batch_update requests
 requests = []
